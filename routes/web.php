@@ -10,10 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::group(['namespace'=>'Admin'],function(){
     Route::get('/demo','DemoController@demo');
@@ -24,5 +25,5 @@ Route::group(['namespace'=>'Admin'],function(){
 
 });
 
-
+*/
 
