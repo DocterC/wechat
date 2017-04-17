@@ -24,3 +24,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 	Route::get('/','DemoController@first');
+
+	Route::get('demo','DemoController@demo');
