@@ -15,6 +15,8 @@ class DemoController extends Controller
     public function first(Request $request)
     {
     	Log::info('start');
+        
+        return 'success';
     	return  $request->input('echostr');
     }
 
