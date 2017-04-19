@@ -14,10 +14,16 @@ class DemoController extends Controller
 
     public function first(Request $request)
     {
-    	Log::info('start');
         
-        return 'success';
-    	return  $request->input('echostr');
+        $result = $request->all();
+        $openid = $request['openid'];
+        return  "<xml>
+                <ToUserName><![CDATA[$openid]]></ToUserName>
+                <FromUserName><![CDATA[292808514]]></FromUserName>
+                <CreateTime><![CDATA[12017193719]]></CreateTime>
+                <MsgType><![CDATA[text]]></MsgType>
+                <Content><![CDATA[你好]]></Content>
+                </xml>";
     }
 
     public function demo()
