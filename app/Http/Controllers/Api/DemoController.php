@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\BaseWechat;
 use Log;
+use Storage;
 
 class DemoController extends Controller
 {
@@ -13,13 +14,20 @@ class DemoController extends Controller
 
     public function first(Request $request)
     {
-    	Log::info($request->all());
+    	Log::info('start');
     	return  $request->input('echostr');
     }
 
     public function demo()
     {
     	return  $this->getcallbackip();
+    }
+
+    public function showLog()
+    {
+        $arr =  Storage::disk('log')->get('laravel.log');
+
+        return $arr;
     }
 
 
