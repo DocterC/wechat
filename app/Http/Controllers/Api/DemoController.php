@@ -17,12 +17,13 @@ class DemoController extends Controller
         
         $result = $request->all();
         $openid = $request['openid'];
+        $time =time();
         return  "<xml>
-                <ToUserName><![CDATA[$openid]]></ToUserName>
-                <FromUserName><![CDATA[292808514]]></FromUserName>
-                <CreateTime><![CDATA[12017193719]]></CreateTime>
-                <MsgType><![CDATA[text]]></MsgType>
-                <Content><![CDATA[你好]]></Content>
+                <ToUserName>$openid</ToUserName>
+                <FromUserName>292808514</FromUserName>
+                <CreateTime>$time</CreateTime>
+                <MsgType>text</MsgType>
+                <Content>hello world</Content>
                 </xml>";
     }
 
