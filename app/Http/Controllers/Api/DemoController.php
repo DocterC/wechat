@@ -30,16 +30,16 @@ class DemoController extends Controller
 
         $file_in = file_get_contents("php://input"); //接收post数据
 
-        $xml = simplexml_load_string($file_in);//转换post数据为simplexml对象
+        $xml = (array)simplexml_load_string($file_in);//转换post数据为simplexml对象
 
-        $arr = array();
-        foreach($xml->children() as $child)    //遍历所有节点数据
+        $ararrayr = array();
+        foreach($xml as $key => $child)    //遍历所有节点数据
         {
-            $arr[$child->getName()] = $child;
+            $array[$key] = struct_to_array((array)$item);
             //$str = $child->getName() . ": " . $child . "<br />"; //打印节点名称和节点值
         }
 
-        Log::info($arr);
+        Log::info($array);
         return 'success';
 //if($child->getName()=="from")    //捡取要操作的节点
 //{
