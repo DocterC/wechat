@@ -32,21 +32,40 @@ class DemoController extends Controller
 
         $xml = simplexml_load_string($file_in);//转换post数据为simplexml对象
 
+        $arr = array();
         foreach($xml->children() as $child)    //遍历所有节点数据
         {
+            $arr[$child->getName()] = $child;
+            //$str = $child->getName() . ": " . $child . "<br />"; //打印节点名称和节点值
+        }
 
-            $str = $child->getName() . ": " . $child . "<br />"; //打印节点名称和节点值
-            Log::info($str);
-
+        Log::info($arr);
+        return 'success';
 //if($child->getName()=="from")    //捡取要操作的节点
 //{
 //echo "i say ". ": get you!" . "<br />"; //操作节点数据
 //}
+/*
+header('Content-Type: text/xml');
+        $xml = <<<XML
+                <?xml version="1.0" encoding="utf-8"?>
+                <xml>
+                    <ToUserName><![CDATA[toUser]]></ToUserName>
+                    <FromUserName><![CDATA[fromUser]]></FromUserName>
+                    <CreateTime>12345678</CreateTime>
+                    <MsgType><![CDATA[image]]></MsgType>
+                    <Image>
+                        <MediaId><![CDATA[media_id]]></MediaId>
+                    </Image>
+                </xml>
 
-        }
+XML;
+        
 
-        return 'success';
 
+
+        return $xml;
+*/
     }
 
     public function demo()
