@@ -35,7 +35,7 @@ class DemoController extends Controller
         $ararrayr = array();
         foreach($xml as $key => $child)    //遍历所有节点数据
         {
-            $array[$key] = (array)$item;
+            $array[$key] = struct_to_array((array)$item);
             //$str = $child->getName() . ": " . $child . "<br />"; //打印节点名称和节点值
         }
 
