@@ -70,7 +70,9 @@ XML;
 
     public function demo()
     {
-    	return  $this->getcallbackip();
+        Log::info('start');
+        return 'success';
+    	//return  $this->getcallbackip();
     }
 
     public function showLog()
