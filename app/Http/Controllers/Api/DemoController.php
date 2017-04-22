@@ -14,7 +14,7 @@ class DemoController extends Controller
 
     public function first(Request $request)
     {
-        
+
         $result = $request->all();
         $openid = $request['openid'];
         $time =time();
@@ -30,12 +30,12 @@ class DemoController extends Controller
 
         $file_in = file_get_contents("php://input"); //接收post数据
 
-        $xml = (array)simplexml_load_string($file_in);//转换post数据为simplexml对象
+        $xml = simplexml_load_string($file_in);//转换post数据为simplexml对象
 
-        $ararrayr = array();
+        $array = array();
         foreach($xml as $key => $child)    //遍历所有节点数据
         {
-            $array[$key] = struct_to_array((array)$item);
+            $array[$key] = $item;
             //$str = $child->getName() . ": " . $child . "<br />"; //打印节点名称和节点值
         }
 
@@ -60,7 +60,7 @@ header('Content-Type: text/xml');
                 </xml>
 
 XML;
-        
+
 
 
 
