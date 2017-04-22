@@ -16,13 +16,11 @@ class DemoController extends Controller
     {
       $file_in = file_get_contents("php://input"); //接收post数据
 
-      $xml = simplexml_load_string($file_in);//转换post数据为simplexml对象
-
       libxml_disable_entity_loader(true);
  
-      $xmlstring = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+      $xml = simplexml_load_string($file_in, 'SimpleXMLElement', LIBXML_NOCDATA);
  
-      $val = json_decode(json_encode($xmlstring),true);
+      $val = json_decode(json_encode($xml),true);
 
       Log::info($val);
 
