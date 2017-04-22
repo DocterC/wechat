@@ -14,24 +14,30 @@ class DemoController extends Controller
 
     public function first(Request $request)
     {
+      $file_in = file_get_contents("php://input"); //接收post数据
 
-        $result = $request->all();
-        $openid = $request['openid'];
-        $time =time();
+      $xml = simplexml_load_string($file_in);//转换post数据为simplexml对象
 
-        $file_in = file_get_contents("php://input"); //接收post数据
+      libxml_disable_entity_loader(true);
+ 
+      $xmlstring = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+ 
+      $val = json_decode(json_encode($xmlstring),true);
 
-        $xml = simplexml_load_string($file_in);//转换post数据为simplexml对象
+      Log::info($val);
+
+      return 'success';
+
 
         $array = array();
-        
+
         foreach($xml as $key => $item)    //遍历所有节点数据
         {
             $array[$key] = $item;
             //$str = $child->getName() . ": " . $child . "<br />"; //打印节点名称和节点值
         }
 
-        Log::info($array);
+
         return 'success';
   }
 //if($child->getName()=="from")    //捡取要操作的节点
