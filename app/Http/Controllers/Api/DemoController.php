@@ -18,7 +18,7 @@ class DemoController extends Controller
 
       libxml_disable_entity_loader(true);
  
-      $xml = simplexml_load_string($file_in, 'SimpleXMLElement', LIBXML_NOCDATA);
+      $xml = simplexml_load_string($file_in);
  
       $val = json_decode(json_encode($xml),true);
 
