@@ -69,10 +69,9 @@ XML;
 
     public function demo()
     {
-        Log::info('start');
-        return 'success';
-    	//return  $this->getcallbackip();
+        return $this->addMenu();
     }
+
 
     public function showLog()
     {

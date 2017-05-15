@@ -23,9 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
+
+	Route::get('mail','MailController@send');
+
 	Route::get('/','DemoController@first');
 
-	Route::post('/','MsgController@responseMsg');
+	//Route::post('/','MsgController@responseMsg');
 
 	Route::get('demo','DemoController@demo');
 
